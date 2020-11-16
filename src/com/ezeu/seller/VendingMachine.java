@@ -1,5 +1,7 @@
 package com.ezeu.seller;
 
+import com.ezeu.utils.InvalidItemOrQuantityException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,42 +22,31 @@ public class VendingMachine {
         return instance;
     }
 
-    protected void addItem() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("enter the item u have to add:");
-        String item = sc.nextLine();
-        System.out.println("enter price for that:");
-        int price = sc.nextInt();
-        System.out.println("quantity to that:");
-        int quantity = sc.nextInt();
-
-        VendingItem vi = new VendingItem(item, price, quantity);
-        items.add(vi);
+    protected void addItem(VendingItem item) {
+        items.add(item);
         System.out.println("item added to the machine");
     }
 
-    protected void deleteItem() {
-        System.out.println("enter the index  u have to delete");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        items.remove(num);
-        System.out.println("u deleted the item");
-    }
-
-    public VendingItem getItem(int index) {
-        return null;
-    }
-
-    private void deleteItem(int index) {
+    protected void deleteItem(int index) {
         items.remove(index);
+    }
+
+    public VendingItem getItem(int index, int qty) {
+        if (index >= 0 && index < items.size() && items.get(index).getQuantity() > qty) {
+            VendingItem item = items.get(index);
+            item.setQuantity(item.getQuantity() - qty);
+            return new VendingItem(item);
+        } else
+            throw new InvalidItemOrQuantityException("Item number or the quantity is invalid " + index);
     }
 
     @Override
     public String toString() {
-        String result = "items are \n";
-        for(int i=0; i<items.size(); i++) {
-            result += i + "  " + items.get(i);
+        StringBuilder resultBuilder = new StringBuilder("items are \n");
+        for(int i = 0; i<items.size(); i++) {
+            resultBuilder.append(i).append("  ").append(items.get(i));
         }
+        String result = resultBuilder.toString();
         result += "\n";
         return result;
     }

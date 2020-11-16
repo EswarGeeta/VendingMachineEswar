@@ -1,12 +1,13 @@
 package com.ezeu.seller;
 
+import com.ezeu.buyer.Customer;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class Main {
-    static ArrayList<VendingItem> item_list = new ArrayList<>();
+class Main {
 
     public static void main(String[] args) {
         int cc;
@@ -14,50 +15,47 @@ public class Main {
         do {
             System.out.println("Owner---1\t\t\t\t\tCustomer------2");
             Scanner sc = new Scanner(System.in);
-             cc = sc.nextInt();
+            cc = sc.nextInt();
             if (cc == 1) {
-              //  VendingItems vending = new VendingItems();
-                Owner owner = new Owner();
-                owner.ownerfeaures();
+                Owner owner = Owner.getInstance();
+                owner.displayOwnerOptions();
+                ownerfeaures(owner);
             }
-            if (cc == 2) {
-                customer c = new customer();
-                c.customer_page();
+            else if (cc == 2) {
+                Customer customer = new Customer();
+                customer.getItemFromVendingMachine();
             }
+            else
+                break;
         }while (true);
     }
 
-
-    public void ownerfeaures() {
+    public static void ownerfeaures(Owner owner) {
+        int choice;
         do {
             System.out.println("enter ur choice");
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
-
             switch (choice) {
-                case 1 -> {
-
-
-                    vendingMachine.addItem();
+                case 1: {
+                    owner.addItemToVendingMachine();
                     break;
                 }
-                case 2 -> {
-                    vendingMachine.deleteItem();
+                case 2: {
+                    owner.deleteItemFromVendingMachine();
                     break;
                 }
-                case 3 -> {
-                    vendingMachine.toString();
+                case 3: {
+                    owner.displayVendingMachineItems();
                     break;
                 }
-                case 4 -> {
+                case 4: {
                     exit(0);
                     break;
                 }
-
-                default -> {
+                default:
                     System.out.println("enter proper choice:");
                     break;
-                }
 
             }
         } while (choice<5);

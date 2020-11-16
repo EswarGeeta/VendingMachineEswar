@@ -12,6 +12,12 @@ public class VendingItem {
         this.quantity=quantity;
     }
 
+    public VendingItem(VendingItem item){
+        super();
+        this.itemname=item.itemname;
+        this.price=item.price;
+        this.quantity=0;
+    }
 
     public String getItemname() {
         return itemname;
