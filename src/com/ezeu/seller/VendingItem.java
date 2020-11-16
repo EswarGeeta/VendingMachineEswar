@@ -45,7 +45,7 @@ public class VendingItem {
 
     @Override
     public String toString() {
-        return "item name="+itemname+"  price ="+price+ "$  quantity:"+quantity+" ";
+        return "item name="+itemname+"  price ="+price+ "$  quantity:"+quantity+" \n";
     }
 }
 
