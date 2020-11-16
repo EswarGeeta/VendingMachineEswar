@@ -38,7 +38,7 @@ public class Owner {
         System.out.println("quantity to that:");
         int quantity = sc.nextInt();
         this.vendingMachine.addItem(new VendingItem(itemname, price, quantity));
-        System.out.println("item added to the machine");
+        //System.out.println("item added to the machine");
     }
 
     public void deleteItemFromVendingMachine() {
