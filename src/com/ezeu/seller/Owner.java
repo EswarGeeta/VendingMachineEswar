@@ -1,11 +1,11 @@
 package com.ezeu.seller;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 
 //import static com.company.VendingMachine.*;
-import static java.lang.System.exit;
+//import static java.lang.System.exit;
 
 public class Owner {
     private VendingMachine vendingMachine;
@@ -45,7 +45,7 @@ public class Owner {
         System.out.println("enter the index  u have to delete");
         Scanner sc = new Scanner(System.in);
         int num = sc.nextInt();
-        this.vendingMachine.deleteItem(num);
+        this.vendingMachine.deleteItem(num-1);
         System.out.println("u deleted the item");
     }
 
