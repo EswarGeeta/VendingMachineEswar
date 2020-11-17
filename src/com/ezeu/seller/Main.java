@@ -2,7 +2,7 @@ package com.ezeu.seller;
 
 import com.ezeu.buyer.Customer;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
@@ -18,13 +18,14 @@ class Main {
             cc = sc.nextInt();
             if (cc == 1) {
                 Owner owner = Owner.getInstance();
-                owner.displayOwnerOptions();
+                //owner.displayOwnerOptions();
                 ownerfeaures(owner);
             }
             else if (cc == 2) {
                 Customer customer = new Customer();
                 customer.getItemFromVendingMachine();
             }
+
             else
                 break;
         }while (true);
@@ -34,6 +35,8 @@ class Main {
         int choice;
         do {
             System.out.println("enter ur choice");
+            System.out.println("1.add item \t 2.remove item \t 3 display item \t 4 exit \t 5 goto home:");
+
             Scanner sc = new Scanner(System.in);
             choice = sc.nextInt();
             switch (choice) {

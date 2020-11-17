@@ -24,7 +24,7 @@ public class VendingMachine {
 
     protected void addItem(VendingItem item) {
         items.add(item);
-        System.out.println("item added to the machine");
+       // System.out.println("item added to the machine");
     }
 
     protected void deleteItem(int index) {
@@ -44,10 +44,11 @@ public class VendingMachine {
     public String toString() {
         StringBuilder resultBuilder = new StringBuilder("items are \n");
         for(int i = 0; i<items.size(); i++) {
-            resultBuilder.append(i).append("  ").append(items.get(i));
+            resultBuilder.append(i+1).append("  ").append(items.get(i)).append("\n");
         }
         String result = resultBuilder.toString();
         result += "\n";
+
         return result;
     }
 }
